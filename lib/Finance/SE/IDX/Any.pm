@@ -8,6 +8,8 @@ use strict 'subs', 'vars';
 use warnings;
 use Log::ger;
 
+use Finance::SE::IDX ();
+
 use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(
@@ -15,6 +17,8 @@ our @EXPORT_OK = qw(
                        list_idx_firms
                        list_idx_sectors
                );
+
+our %SPEC = %Finance::SE::IDX::SPEC;
 
 our $FALLBACK_PERIOD = 4*3600;
 
@@ -27,7 +31,6 @@ sub _doit {
     my $now = time();
     unless ($last_fail_time &&
                 ($now-$last_fail_time) <= $FALLBACK_PERIOD) {
-        require Finance::SE::IDX;
         my $res = &{"Finance::SE::IDX::$which"}(@_);
         if ($res->[0] == 200) {
             undef $last_fail_time;
@@ -71,15 +74,6 @@ This module provides the same functions as L<Finance::SE::IDX>, e.g.
 C<list_idx_firms> and will call the Finance::SE::IDX version but will fallback
 for a while (default: 4 hours) to the L<Finance::SE::IDX::Static> version when
 the functions fail.
-
-
-=head1 FUNCTIONS
-
-=head2 list_idx_boards
-
-=head2 list_idx_firms
-
-=head2 list_idx_sectors
 
 
 =head1 VARIABLES
