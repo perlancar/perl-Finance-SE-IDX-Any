@@ -71,7 +71,7 @@ Use like you would use L<Finance::SE::IDX>.
 =head1 DESCRIPTION
 
 This module provides the same functions as L<Finance::SE::IDX>, e.g.
-C<list_idx_firms> and will call the Finance::SE::IDX version but will fallback
+C<list_idx_firms>, and will call the Finance::SE::IDX version but will fallback
 for a while (default: 4 hours) to the L<Finance::SE::IDX::Static> version when
 the functions fail.
 
