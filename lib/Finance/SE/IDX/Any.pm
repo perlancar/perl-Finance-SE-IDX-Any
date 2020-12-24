@@ -1,6 +1,8 @@
 package Finance::SE::IDX::Any;
 
+# AUTHORITY
 # DATE
+# DIST
 # VERSION
 
 use 5.010001;
@@ -14,6 +16,7 @@ use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(
                        list_idx_boards
+                       list_idx_brokers
                        list_idx_firms
                        list_idx_sectors
                );
@@ -55,6 +58,8 @@ sub _doit {
 }
 
 sub list_idx_boards  { _doit("list_idx_boards", @_) }
+
+sub list_idx_brokers  { _doit("list_idx_brokers", @_) }
 
 sub list_idx_firms   { _doit("list_idx_firms", @_) }
 
